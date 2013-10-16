@@ -2,6 +2,8 @@
 
 # database testings
 *.db
+# specs from pyinstaller
+*.spec
 # C extensions
 *.so
 
