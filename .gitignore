@@ -1,5 +1,7 @@
 *.py[cod]
 
+# database testings
+*.db
 # C extensions
 *.so
 
