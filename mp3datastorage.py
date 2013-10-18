@@ -4,9 +4,12 @@ import sqlite3 as sql
 
 import mp3metadata
 
+#TODO don't drop tables all the time
+#Allow database recognition and resetting the database
+
 class SQLmgr:
 
-	def __init__(self, username):
+	def __init__(self, username): #note everytime function is called MusicData table is dropped!
 		self.serv = False
 		self.servcount=1
 		db = username + ".db"
@@ -26,6 +29,7 @@ class SQLmgr:
 			with sql.connect(self.db) as serv:
 				self.serv = serv.cursor()
 				self.serv.execute("INSERT INTO MusicData VALUES (?, ?, ?, ?);", case)
+				self.servcount += 1
 				self.serv.close()
 		except sql.Error, e:
 			print "An error occurred inserting data."
@@ -35,7 +39,8 @@ class SQLmgr:
 		try:
 			tester = mp3metadata.mp3data().returnobj()
 			case = []
-			case.append(1) #testing purpose counter
+			case.append(self.servcount)
+			#tuple pairings will proceed in this order.
 			for k,v in tester.items():
 				if k in ["ALBUM", "ARTIST", "TITLE"]:
 					case.append(v)		
