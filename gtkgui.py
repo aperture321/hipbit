@@ -2,6 +2,9 @@
 from gi.repository import Gtk
 import pyex
 
+
+#TODO gtk2 compliant.
+
 class MyWindow(Gtk.Window):
 	def __init__(self):
 		Gtk.Window.__init__(self, title="hipbit")

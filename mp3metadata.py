@@ -2,6 +2,8 @@
 
 from ID3 import *
 
+#TODO add further directory search methods
+
 class mp3data:
 	def trial(self):
 		try:

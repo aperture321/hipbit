@@ -1,4 +1,5 @@
-#python example program!
+#python example unit testing!
+
 from mp3metadata import *
 from mp3datastorage import *
 
@@ -9,7 +10,6 @@ def tester(test):
 		return "fail"
 
 def testsuite():
-	#mp3 data tester
 	test = mp3data().trial()
 	print "MP3Metadata Test: " + tester(test)
 	if tester(test) is 'pass':
