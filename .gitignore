@@ -6,6 +6,10 @@
 *.spec
 # C extensions
 *.so
+# Any modified files
+*~
+# wxglade autosave
+\#*\#
 
 # Packages
 *.egg
