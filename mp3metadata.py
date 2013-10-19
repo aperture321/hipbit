@@ -3,6 +3,7 @@
 from ID3 import *
 
 #TODO add further directory search methods
+import os
 
 class mp3data:
 	def trial(self):
@@ -18,3 +19,13 @@ class mp3data:
 		filename = 'testfolder/furelise.mp3'
 		id3info = ID3(filename)
 		return id3info
+
+	def mp3search(self, dir_path):
+		try:
+			for root, dirs, files in os.walk(dir_path):
+				for file in files:
+					if file.endswith(".mp3"):
+						print os.path.join(root, file)
+			return 0
+		except:
+			return 1
