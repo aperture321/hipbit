@@ -17,7 +17,8 @@ def ID3test():
 
 #tests for adding ID3 into database
 def AddDBtest():
-	test = SQLmgr('test').add_test()
+	filename = 'testfolder/furelise.mp3'
+	test = SQLmgr('test').add_test(filename)
 	return tester(test)
 
 #tests for recursive directory searching

@@ -54,7 +54,7 @@ class SQLmgr:
 			print e.args[0]
 			return 1
 
-	def add_test(self):
+	def add_test(self, filedir):
 		try:
 			tester = mp3metadata.mp3data().returnobj()
 			case = []
@@ -63,6 +63,7 @@ class SQLmgr:
 			for k,v in tester.items():
 				if k in ["ALBUM", "ARTIST", "TITLE"]:
 					case.append(v)		
+			case.append(filedir)
 			self.add_db(tuple(case))
 			return 0
 		except sql.Error, e:
