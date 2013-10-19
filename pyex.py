@@ -9,10 +9,18 @@ def tester(test):
 	else:
 		return "fail"
 
-def testsuite():
-	test = mp3data().trial()
-	print "MP3Metadata Test: " + tester(test)
-	if tester(test) is 'pass':
-		test = SQLmgr('test').add_test()
-		print "MP3 Data Storage Test: " + tester(test)
 
+#tests for basic file ID3 Info
+def ID3test():
+	test = mp3data().trial()
+	return tester(test)
+
+#tests for adding ID3 into database
+def AddDBtest():
+	test = SQLmgr('test').add_test()
+	return tester(test)
+
+#tests for recursive directory searching
+def mp3search(dirs):
+	test = mp3data().mp3search(dirs)
+	return tester(test)
