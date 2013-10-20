@@ -51,7 +51,7 @@ class SQLmgr:
 				self.servcount += 1
 				self.serv.close()
 		except sql.Error, e:
-			errors.write(str(case[-1]))
+			self.errors.write(str(case[-1]))
 
 	def addmp3todb(self, filetup):
 		try:
@@ -63,7 +63,7 @@ class SQLmgr:
 			case.append(filetup[0])
 			self.add_db(tuple(case))
 		except:
-			errors.write("Error writing: " + filetup[1])
+			self.errors.write("Error writing: " + filetup[1])
 			
 
 	def add_test(self, filedir):
