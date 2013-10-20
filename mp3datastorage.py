@@ -11,6 +11,7 @@ class SQLmgr:
 
 	def __init__(self, username): #note everytime function is called MusicData table is dropped!
 		self.serv = False
+		self.errors = open("error.txt", "w")
 		self.servcount=1
 		db = username + ".db"
 		self.db = db
@@ -50,9 +51,7 @@ class SQLmgr:
 				self.servcount += 1
 				self.serv.close()
 		except sql.Error, e:
-			print "An error occurred inserting data."
-			print e.args[0]
-			return 1
+			errors.write(str(case[-1]))
 
 	def addmp3todb(self, filetup):
 		try:
