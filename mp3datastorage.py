@@ -54,6 +54,19 @@ class SQLmgr:
 			print e.args[0]
 			return 1
 
+	def addmp3todb(self, filetup):
+		try:
+			case = []
+			case.append(self.servcount)
+			for h,j in filetup[1].items():
+				if h in ["ALBUM", "ARTIST", "TITLE"]:
+					case.append(j)
+			case.append(filetup[0])
+			self.add_db(tuple(case))
+		except:
+			print "Error printing to db."
+			
+
 	def add_test(self, filedir):
 		try:
 			tester = mp3metadata.mp3data().returnobj()
