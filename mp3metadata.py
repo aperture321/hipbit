@@ -29,3 +29,20 @@ class mp3data:
 			return 0
 		except:
 			return 1
+
+	def mp3add(self, dir_path):
+		listy = [] #list of tuples
+		try:
+			for root, dirs, files in os.walk(dir_path):
+				for filename in files:
+					if filename.endswith(".mp3"):
+						try:
+							pathtype = os.path.join(root,filename)
+							id3info = ID3(pathtype)
+							listy.append((pathtype, id3info)) #add a tuple
+						except: #file was not a proper mp3 file
+							continue
+					
+			return listy
+		except:
+			return [] #empty list
