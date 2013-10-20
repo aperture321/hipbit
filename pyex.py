@@ -25,3 +25,10 @@ def AddDBtest():
 def mp3search(dirs):
 	test = mp3data().mp3search(dirs)
 	return tester(test)
+
+
+def realtest(dirs):
+	lister = mp3data().mp3add(dirs) #test contains mp3 listy which is a tuple of filepath and ID3 info
+	a = SQLmgr('test')
+	for i in lister:
+		a.addmp3todb(i)
