@@ -63,7 +63,7 @@ class SQLmgr:
 			case.append(filetup[0])
 			self.add_db(tuple(case))
 		except:
-			print "Error printing to db."
+			errors.write("Error writing: " + filetup[1])
 			
 
 	def add_test(self, filedir):
