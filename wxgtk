@@ -61,9 +61,10 @@ class MyFrame1(wx.Frame):
         if self.path_choice == "": #nothing in path
             self.label_1.SetLabel("Error, no path given.")
         else:
-            self.text = self.testtypes[0] + pyex.ID3test() + " \n" + self.testtypes[1] + pyex.AddDBtest() \
-                        + " \n" + self.testtypes[2] + pyex.mp3search(self.path_choice)
-            self.label_1.SetLabel(self.text)
+            #self.text = self.testtypes[0] + pyex.ID3test() + " \n" + self.testtypes[1] + pyex.AddDBtest() \
+            #            + " \n" + self.testtypes[2] + pyex.mp3search(self.path_choice)
+            pyex.realtest(self.path_choice)
+            self.label_1.SetLabel("Done")
         event.Skip()
 
     def closer(self, event):  # wxGlade: MyFrame1.<event_handler>
