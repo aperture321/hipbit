@@ -31,7 +31,7 @@ class SQLmgr:
 	def wipe_database(self, username):
 		self.db = username + ".db"
 		try:
-			serv = sql.connect(db)
+			serv = sql.connect(self.db)
 			with serv:
 				self.serv = serv.cursor()
 				self.serv.execute("DROP TABLE IF EXISTS MusicData")
