@@ -10,6 +10,7 @@
 *~
 # wxglade autosave
 \#*\#
+usergui
 
 # Packages
 *.egg
