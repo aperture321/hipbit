@@ -62,11 +62,15 @@ class my_login_frame(wx.Frame):
         return self.login_info
 
     def getvals(self, event):  # wxGlade: my_login_frame.<event_handler>
-        self.login_info = self.text_ctrl_2.GetValue() + ";" + self.text_ctrl_3.GetValue()
+        self.login_info = self.text_ctrl_2.GetValue() + "\n" + self.text_ctrl_3.GetValue() + "\n"
         #TODO add server declaration
             #checks to see either string has anything in them besides whitespace
         if (self.text_ctrl_2.GetValue().strip() and self.text_ctrl_3.GetValue().strip()):
-            self.label_3.SetLabel(self.get_text())
+            self.label_3.SetLabel("waiting...\nsuccess!")
+            #TODO add server resulsts here.
+            self.config = open("config.cfg", "w")
+            self.config.write(self.get_text())
+            self.config.close()
         else:
             self.label_3.SetLabel("Error with \nlogin/pass")
         event.Skip()
