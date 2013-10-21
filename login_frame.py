@@ -18,10 +18,15 @@ class my_login_frame(wx.Frame):
         self.label_2 = wx.StaticText(self, -1, "password:")
         self.text_ctrl_3 = wx.TextCtrl(self, -1, "")
         self.button_1 = wx.Button(self, -1, "Submit")
+        self.label_3 = wx.StaticText(self, -1, "")
 
         self.__set_properties()
         self.__do_layout()
+
+        self.Bind(wx.EVT_BUTTON, self.getvals, self.button_1)
         # end wxGlade
+
+        self.login_info = "" #login info for user
 
     def __set_properties(self):
         # begin wxGlade: my_login_frame.__set_properties
@@ -31,6 +36,7 @@ class my_login_frame(wx.Frame):
     def __do_layout(self):
         # begin wxGlade: my_login_frame.__do_layout
         sizer_2 = wx.BoxSizer(wx.VERTICAL)
+        sizer_5 = wx.BoxSizer(wx.HORIZONTAL)
         sizer_4 = wx.BoxSizer(wx.HORIZONTAL)
         sizer_3 = wx.BoxSizer(wx.HORIZONTAL)
         sizer_3.Add((10, 20), 0, 0, 0)
@@ -43,11 +49,21 @@ class my_login_frame(wx.Frame):
         sizer_4.Add((20, 20), 0, 0, 0)
         sizer_4.Add(self.text_ctrl_3, 0, wx.ALIGN_CENTER_HORIZONTAL | wx.ALIGN_CENTER_VERTICAL, 0)
         sizer_2.Add(sizer_4, 1, 0, 0)
-        sizer_2.Add(self.button_1, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
+        sizer_5.Add(self.button_1, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
+        sizer_5.Add(self.label_3, 0, 0, 0)
+        sizer_2.Add(sizer_5, 1, wx.EXPAND, 0)
         self.SetSizer(sizer_2)
         sizer_2.Fit(self)
         self.Layout()
         # end wxGlade
+
+    def get_text(self):
+        return self.login_info
+
+    def getvals(self, event):  # wxGlade: my_login_frame.<event_handler>
+        self.login_info = self.text_ctrl_2.GetValue() + ";" + self.text_ctrl_3.GetValue()
+        self.label_3.SetLabel(self.get_text())
+        event.Skip()
 
 # end of class my_login_frame
 if __name__ == "__main__":

@@ -48,6 +48,7 @@ class MainConsole(wx.Frame):
         self.button_1 = wx.Button(self, -1, "Scan and Refresh\nDatabase")
         self.datareset = wx.Button(self, -1, "Reset\nDatabase")
         self.Statusbar = wx.StaticText(self, -1, "Hope you enjoy!", style=wx.ALIGN_CENTRE)
+        self.new = login_frame.my_login_frame(parent=None, id=-1)
         
         # Menu Bar
         self.frame_1_menubar = wx.MenuBar()
@@ -111,10 +112,11 @@ class MainConsole(wx.Frame):
         event.Skip()
 
     def logger(self, event):  #login frame appears to store login data.
-        self.new = login_frame.my_login_frame(parent=None, id=-1)
-        self.new.Show()
+        self.new = login_frame.my_login_frame(parent=None, id=-1) #required for reinitializing multiple exits
+        self.new.Show(True)
         event.Skip()
 
+''''''#self.filestatus.SetLabel(self.new.get_text())
 # end of class MainConsole
 class UserGui(wx.App):
     def OnInit(self):
