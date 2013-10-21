@@ -4,6 +4,7 @@
 
 import wx
 import pyex
+import login_frame
 # begin wxGlade: extracode
 # end wxGlade
 
@@ -29,6 +30,13 @@ class MyMenuBar3(wx.MenuBar):
         event.Skip()
 
 # end of class MyMenuBar3
+
+class NewWindow(wx.Frame):
+    def __init__(self,parent,id):
+        wx.Frame.__init__(self, parent, id, 'New Window', size=(400,300))
+        wx.Frame.CenterOnScreen(self)
+        #self.new.Show(False)
+
 class MainConsole(wx.Frame):
     def __init__(self, *args, **kwds):
         # begin wxGlade: MainConsole.__init__
@@ -44,7 +52,7 @@ class MainConsole(wx.Frame):
         # Menu Bar
         self.frame_1_menubar = wx.MenuBar()
         self.file_bar = wx.Menu()
-        self.login_bar = wx.MenuItem(self.file_bar, wx.NewId(), "Login Info", "Enter login information", wx.ITEM_NORMAL)
+        self.login_bar = wx.MenuItem(self.file_bar, wx.NewId(), "Login", "Enter login information", wx.ITEM_NORMAL)
         self.file_bar.AppendItem(self.login_bar)
         self.frame_1_menubar.Append(self.file_bar, "File")
         self.SetMenuBar(self.frame_1_menubar)
@@ -94,13 +102,17 @@ class MainConsole(wx.Frame):
                            #| wx.DD_CHANGE_DIR
                            )
         if dlg.ShowModal() == wx.ID_OK:
-            self.path_dir = dlg.GetPath() #path for directory piece
-            self.filestatus.SetLabel(self.path_dir)
+            self.path_dir = dlg.GetPath() 
+            if (len(self.path_dir) > 15):  #Allows so there's no dynamic size constraints
+                self.filestatus.SetLabel(self.path_dir[0:15] + "...")
+            else:
+                self.filestatus.SetLabel(self.path_dir)
         dlg.Destroy()
         event.Skip()
 
-    def logger(self, event):  # wxGlade: MainConsole.<event_handler>
-        print "Event handler `logger' not implemented"
+    def logger(self, event):  #login frame appears to store login data.
+        self.new = login_frame.my_login_frame(parent=None, id=-1)
+        self.new.Show()
         event.Skip()
 
 # end of class MainConsole
