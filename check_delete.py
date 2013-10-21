@@ -51,6 +51,7 @@ class check_del(wx.Frame):
 
     def yes_del(self, event):  # wxGlade: check_del.<event_handler>
         mp3datastorage.SQLmgr(self.name).wipe_database(self.name)
+        self.Close()
         event.Skip()
 
     def no_del(self, event):  # wxGlade: check_del.<event_handler>

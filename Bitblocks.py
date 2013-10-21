@@ -73,11 +73,17 @@ class MainConsole(wx.Frame):
         self.menubar = MyMenuBar3()
 
     def scan_start(self, event):
-        event.Skip()
+        if(self.config_exists()):
+            #self.deleter = check_delete.check_del(parent=None, id=-1)
+            #self.deleter.Show()
+            pass
+        #TODO start scanning
 
     def reset_window(self, event):
-        self.deleter = check_delete.check_del(parent=None, id=-1)
-        self.deleter.Show()
+        if(self.config_exists()):
+            self.deleter = check_delete.check_del(parent=None, id=-1)
+            self.deleter.Show()
+        self.Statusbar.SetLabel("Database wiped.")
 
     def __set_properties(self):
         # begin wxGlade: MainConsole.__set_properties
@@ -120,6 +126,13 @@ class MainConsole(wx.Frame):
                 self.filestatus.SetLabel(self.path_dir)
         dlg.Destroy()
         event.Skip()
+
+    def config_exists(self):
+        try:
+            open("config.cfg","r")
+            return 1
+        except:
+            self.Statusbar.SetLabel("Error. No login info.")
 
     def logger(self, event):  #login frame appears to store login data.
         self.new = login_frame.my_login_frame(parent=None, id=-1) #required for reinitializing multiple exits
