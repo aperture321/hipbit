@@ -31,6 +31,7 @@ class my_login_frame(wx.Frame):
     def __set_properties(self):
         # begin wxGlade: my_login_frame.__set_properties
         self.SetTitle("log info")
+        self.button_1.SetMinSize((85, 33))
         # end wxGlade
 
     def __do_layout(self):
@@ -50,7 +51,7 @@ class my_login_frame(wx.Frame):
         sizer_4.Add(self.text_ctrl_3, 0, wx.ALIGN_CENTER_HORIZONTAL | wx.ALIGN_CENTER_VERTICAL, 0)
         sizer_2.Add(sizer_4, 1, 0, 0)
         sizer_5.Add(self.button_1, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
-        sizer_5.Add(self.label_3, 0, 0, 0)
+        sizer_5.Add(self.label_3, 0, wx.SHAPED, 0)
         sizer_2.Add(sizer_5, 1, wx.EXPAND, 0)
         self.SetSizer(sizer_2)
         sizer_2.Fit(self)
@@ -62,7 +63,12 @@ class my_login_frame(wx.Frame):
 
     def getvals(self, event):  # wxGlade: my_login_frame.<event_handler>
         self.login_info = self.text_ctrl_2.GetValue() + ";" + self.text_ctrl_3.GetValue()
-        self.label_3.SetLabel(self.get_text())
+        #TODO add server declaration
+            #checks to see either string has anything in them besides whitespace
+        if (self.text_ctrl_2.GetValue().strip() and self.text_ctrl_3.GetValue().strip()):
+            self.label_3.SetLabel(self.get_text())
+        else:
+            self.label_3.SetLabel("Error with \nlogin/pass")
         event.Skip()
 
 # end of class my_login_frame
