@@ -15,17 +15,6 @@ import os
 Will hold menubar information for the class
 '''
 class MyMenuBar3(wx.MenuBar):
-    def __init__(self, *args, **kwds):
-        # content of this block not found: did you rename this class?
-        pass
-
-    def __set_properties(self):
-        # content of this block not found: did you rename this class?
-        pass
-
-    def __do_layout(self):
-        # content of this block not found: did you rename this class?
-        pass
 
     def logger(self, event):  # wxGlade: MyMenuBar3.<event_handler>
         print "Event handler `logger' not implemented!"
