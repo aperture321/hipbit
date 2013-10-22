@@ -6,6 +6,7 @@ import wx
 import pyex
 import login_frame #for login menubar window
 import check_delete #for deleting objects
+import os
 # begin wxGlade: extracode
 # end wxGlade
 
@@ -49,7 +50,8 @@ class MainConsole(wx.Frame):
         self.button_1 = wx.Button(self, -1, "Scan and Refresh\nDatabase")
         self.datareset = wx.Button(self, -1, "Reset\nDatabase")
         self.Statusbar = wx.StaticText(self, -1, "Hope you enjoy!", style=wx.ALIGN_CENTRE)
-#        self.new = login_frame.my_login_frame(parent=None, id=-1)
+        self.new = login_frame.my_login_frame(parent=None, id=-1)
+
         
         # Menu Bar
         self.frame_1_menubar = wx.MenuBar()
@@ -72,6 +74,8 @@ class MainConsole(wx.Frame):
         self.path_dir = "________________________" #path directory initializer
         self.menubar = MyMenuBar3()
 
+
+
     def scan_start(self, event):
         if(self.config_exists()):
             #self.deleter = check_delete.check_del(parent=None, id=-1)
@@ -83,7 +87,10 @@ class MainConsole(wx.Frame):
         if(self.config_exists()):
             self.deleter = check_delete.check_del(parent=None, id=-1)
             self.deleter.Show()
-        self.Statusbar.SetLabel("Database wiped.")
+        if(os.path.isfile(open("config.cfg", "r").readline().rstrip() + ".db")):
+            pass
+        else:
+            self.Statusbar.SetLabel("Database wiped.")
 
     def __set_properties(self):
         # begin wxGlade: MainConsole.__set_properties
@@ -133,6 +140,7 @@ class MainConsole(wx.Frame):
             return 1
         except:
             self.Statusbar.SetLabel("Error. No login info.")
+            return 0
 
     def logger(self, event):  #login frame appears to store login data.
         self.new = login_frame.my_login_frame(parent=None, id=-1) #required for reinitializing multiple exits
@@ -147,6 +155,10 @@ class UserGui(wx.App):
         frame_1 = MainConsole(None, -1, "")
         self.SetTopWindow(frame_1)
         frame_1.Show()
+        if(not frame_1.config_exists()): #For initial login checking.
+            frame_1.new.SetFocus()
+            frame_1.new.Raise()
+            frame_1.new.Show(True)
         return 1
 
 # end of class UserGui

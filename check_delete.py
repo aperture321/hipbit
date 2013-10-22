@@ -14,7 +14,7 @@ class check_del(wx.Frame):
         # begin wxGlade: check_del.__init__
         kwds["style"] = wx.DEFAULT_FRAME_STYLE
         wx.Frame.__init__(self, *args, **kwds)
-        self.label_3 = wx.StaticText(self, -1, "Are you sure you\nwish to delete database?", style=wx.ALIGN_CENTRE)
+        self.label_3 = wx.StaticText(self, -1, "Are you sure you\nwish to wipe database?", style=wx.ALIGN_CENTRE)
         self.button_1 = wx.Button(self, -1, "Yes")
         self.button_2 = wx.Button(self, -1, "No")
 
@@ -26,7 +26,7 @@ class check_del(wx.Frame):
         # end wxGlade
 
         self.name = open("config.cfg", "r").readline().rstrip()
-        
+
     def __set_properties(self):
         # begin wxGlade: check_del.__set_properties
         self.SetTitle("delete confirm")
@@ -52,10 +52,8 @@ class check_del(wx.Frame):
     def yes_del(self, event):  # wxGlade: check_del.<event_handler>
         mp3datastorage.SQLmgr(self.name).wipe_database(self.name)
         self.Close()
-        event.Skip()
 
     def no_del(self, event):  # wxGlade: check_del.<event_handler>
-        #nothing to do.
         self.Close()
 
 # end of class check_del

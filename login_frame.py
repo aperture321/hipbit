@@ -72,6 +72,7 @@ class my_login_frame(wx.Frame):
             self.config = open("config.cfg", "w")
             self.config.write(self.get_text())
             self.config.close()
+
         else:
             self.label_3.SetLabel("Error with \nlogin/pass")
 
