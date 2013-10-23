@@ -32,12 +32,7 @@ class SQLmgr:
 	def wipe_database(self, username):
 		self.db = username + ".db"
 		try:
-			serv = sql.connect(db)
-			with serv:
-				self.serv = serv.cursor()
-				self.serv.execute("DROP TABLE IF EXISTS MusicData")
-				self.serv.execute("CREATE TABLE MusicData(Id INT, ALBUM TEXT, ARTIST TEXT, TITLE TEXT, PATH TEXT)")
-				self.serv.close()
+			os.remove(self.db)
 		except sql.Error, e:
 			print "Error wiping database."
 			return 1				

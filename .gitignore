@@ -10,7 +10,10 @@
 *~
 # wxglade autosave
 \#*\#
+usergui
 
+#ignore config file
+*.cfg
 # Packages
 *.egg
 *.egg-info
