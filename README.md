@@ -12,6 +12,10 @@ Building:
   ID3-lib-1.2
 
 Building:
-  pyinstaller -F -w wxgtk
+  
+Unit testing: pyinstaller -F -w wxgtk
+
+User setup program: pyinstaller -F -w Bitblocks.py --icon="folder_music.ico"
+  
   
 
