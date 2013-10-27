@@ -2,7 +2,7 @@
 
 from ID3 import *
 
-#TODO add further directory search methods
+# TODO add further directory search methods
 import os
 
 class mp3data:
@@ -40,6 +40,7 @@ class mp3data:
 							pathtype = os.path.join(root,filename)
 							id3info = ID3(pathtype)
 							listy.append((pathtype, id3info)) #add a tuple
+							#TODO id3info.file.close()
 						except: #file was not a proper mp3 file
 							continue
 					
