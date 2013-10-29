@@ -33,6 +33,7 @@ class my_login_frame(wx.Frame):
         # begin wxGlade: my_login_frame.__set_properties
         self.SetTitle("log info")
         self.button_1.SetMinSize((85, 33))
+        self.SetBackgroundColour(wx.Colour(127, 170, 191))
         # end wxGlade
 
     def __do_layout(self):

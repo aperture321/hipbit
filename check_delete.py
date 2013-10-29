@@ -31,6 +31,7 @@ class check_del(wx.Frame):
         # begin wxGlade: check_del.__set_properties
         self.SetTitle("delete confirm")
         self.label_3.SetFont(wx.Font(20, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Droid Sans"))
+        self.SetBackgroundColour(wx.Colour(127, 170, 191))
         # end wxGlade
 
     def __do_layout(self):
