@@ -33,6 +33,9 @@ class MainConsole(wx.Frame):
         # begin wxGlade: MainConsole.__init__
         kwds["style"] = wx.DEFAULT_FRAME_STYLE
         wx.Frame.__init__(self, *args, **kwds)
+        bg_img='cloudlayer.png' #background to use for the program
+        self.bg = wx.Bitmap(bg_img)
+        self._width, self._height = self.bg.GetSize()
         self.TitleGreet = wx.StaticText(self, -1, "Pick your MP3 folder!", style=wx.ALIGN_CENTRE)
         self.filestatus = wx.StaticText(self, -1, "________________________")
         self.browse_button = wx.Button(self, wx.ID_OPEN, "")
@@ -58,12 +61,26 @@ class MainConsole(wx.Frame):
         self.Bind(wx.EVT_BUTTON, self.scan_start, self.button_1)
         self.Bind(wx.EVT_BUTTON, self.reset_window, self.datareset)
         self.Bind(wx.EVT_MENU, self.logger, self.login_bar)
+
+        self.Bind(wx.EVT_PAINT, self.OnPaint)
         # end wxGlade
 
         self.path_dir = "________________________" #path directory initializer
         self.menubar = MyMenuBar3()
 
 
+    def OnPaint(self, evt):
+        dc = wx.BufferedPaintDC(self)
+        self.Draw(dc)
+
+    def Draw(self, dc):
+        cliWidth, cliHeight = self.GetClientSize()
+        if not cliWidth or not cliHeight:
+            return
+        dc.Clear()
+        xPos = (cliWidth - self._width)/2
+        yPos = (cliHeight - self._height)/2
+        dc.DrawBitmap(self.bg, xPos, yPos)
 
     def scan_start(self, event):
         if(self.config_exists()):
@@ -87,7 +104,7 @@ class MainConsole(wx.Frame):
         _icon = wx.EmptyIcon()
         _icon.CopyFromBitmap(wx.Bitmap("/home/aperture/hipbit/folder_music.ico", wx.BITMAP_TYPE_ANY))
         self.SetIcon(_icon)
-        self.SetSize((210, 127))
+        self.SetSize((210, 148))
         self.TitleGreet.SetMinSize((127, 17))
         # end wxGlade
 
