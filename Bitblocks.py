@@ -102,7 +102,7 @@ class MainConsole(wx.Frame):
         # begin wxGlade: MainConsole.__set_properties
         self.SetTitle("Hip Bit")
         _icon = wx.EmptyIcon()
-        _icon.CopyFromBitmap(wx.Bitmap("/home/aperture/hipbit/folder_music.ico", wx.BITMAP_TYPE_ANY))
+        _icon.CopyFromBitmap(wx.Bitmap("folder_music.ico", wx.BITMAP_TYPE_ANY))
         self.SetIcon(_icon)
         self.SetSize((210, 148))
         self.TitleGreet.SetMinSize((127, 17))

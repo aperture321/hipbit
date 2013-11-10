@@ -32,6 +32,8 @@ class my_login_frame(wx.Frame):
     def __set_properties(self):
         # begin wxGlade: my_login_frame.__set_properties
         self.SetTitle("log info")
+        _icon = wx.EmptyIcon()
+        _icon.CopyFromBitmap(wx.Bitmap("folder_music.ico", wx.BITMAP_TYPE_ANY))
         self.button_1.SetMinSize((85, 33))
         self.SetBackgroundColour(wx.Colour(127, 170, 191))
         # end wxGlade

@@ -30,6 +30,8 @@ class check_del(wx.Frame):
     def __set_properties(self):
         # begin wxGlade: check_del.__set_properties
         self.SetTitle("delete confirm")
+        _icon = wx.EmptyIcon()
+        _icon.CopyFromBitmap(wx.Bitmap("folder_music.ico", wx.BITMAP_TYPE_ANY))
         self.label_3.SetFont(wx.Font(20, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Droid Sans"))
         self.SetBackgroundColour(wx.Colour(127, 170, 191))
         # end wxGlade
