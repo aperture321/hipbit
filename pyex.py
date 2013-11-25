@@ -29,6 +29,8 @@ def mp3search(dirs):
 
 def realtest(dirs):
 	lister = mp3data().mp3add(dirs) #test contains mp3 listy which is a tuple of filepath and ID3 info
-	a = SQLmgr('test')
+	fileuse = open("config.cfg")
+	user = SQLmgr(fileuse.readline().rstrip())
+	fileuse.close()
 	for i in lister:
-		a.addmp3todb(i)
+		user.addmp3todb(i)

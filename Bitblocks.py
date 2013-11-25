@@ -73,6 +73,9 @@ class MainConsole(wx.Frame):
         dc = wx.BufferedPaintDC(self)
         self.Draw(dc)
 
+    '''
+    Function which redraws the background as the window is resized.
+    '''
     def Draw(self, dc):
         cliWidth, cliHeight = self.GetClientSize()
         if not cliWidth or not cliHeight:
@@ -88,6 +91,8 @@ class MainConsole(wx.Frame):
             #self.deleter.Show()
             pass
         #TODO start scanning
+        pyex.realtest(self.path_dir)
+        self.Statusbar.SetLabel("Done")
 
     def reset_window(self, event):
         if(self.config_exists()):
