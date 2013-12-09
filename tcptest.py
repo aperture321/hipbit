@@ -6,7 +6,7 @@ import sys
 import os
 import time
 
-TCP_IP = '127.0.0.1'
+TCP_IP = '74.5.183.40'
 TCP_PORT = 1221
 BUFFER_SIZE = 1024
 try:
