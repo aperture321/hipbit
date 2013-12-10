@@ -8,8 +8,8 @@ def searchparams(filesfound):
           filesfound.append(file)
           filepre = file[:file.find(".db")]
           filepre += ".html"
-          os.system("sqlite3 -html %s 'select * from MusicData;' > %s" % (file, filepre))
-          tcpsend.send(filepre)
+          os.system("sqlite3 -html %s 'select * from MusicData;' > %s" % (file, filepre)) #will conver to .html
+          tcpsend.send(filepre) #send in the entire html
     return 0
 
 filesfound = []
