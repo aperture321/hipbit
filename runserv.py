@@ -1,8 +1,8 @@
 import os
-import tcptest as tcpsend
+import tcpsend
 
 def searchparams(filesfound):
-    for root, dirs, files in os.walk("/home/aperture/hipbit"):
+    for root, dirs, files in os.walk(os.getcwd()):
       for file in files:
         if file.endswith(".db") and file not in filesfound:
           filesfound.append(file)
