@@ -20,14 +20,16 @@ def send(filetosend):
     s.send(str(limit) + "**" + filetosend + "&&") #first, send the limit with termination character, then filename and another termination character.
     while(1):
       s.send(l)
-      if currentamt >= limit:
+      if currentamt > limit:
+        print currentamt
         break
       l = f.read(BUFFER_SIZE)
       currentamt += BUFFER_SIZE
       print "still sending.."
-    s.close()
     print "Done."
     time.sleep(3)
+    s.close()
   except:
     print "Unexpected error:", sys.exc_info()[0]
     time.sleep(3)
+    s.close()
