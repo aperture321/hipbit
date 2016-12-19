@@ -9,7 +9,6 @@ import os
 # end wxGlade
 
 
-
 class MyFrame1(wx.Frame):
     def __init__(self, *args, **kwds):
         # begin wxGlade: MyFrame1.__init__
@@ -28,8 +27,8 @@ class MyFrame1(wx.Frame):
         self.Bind(wx.EVT_BUTTON, self.on_dir, self.button_2)
         # end wxGlade
 
-        self.path_choice = "" #Path for directory searching
-        #test types
+        self.path_choice = ""  # Path for directory searching
+        # test types
         self.testtypes = ["MP3Metadata Test: ", "MP3 Data Storage Test: ",
                           "Directory Test: "]
 
@@ -58,7 +57,7 @@ class MyFrame1(wx.Frame):
         # end wxGlade
 
     def tester(self, event):  # wxGlade: MyFrame1.<event_handler>
-        if self.path_choice == "": #nothing in path
+        if self.path_choice == "":  # nothing in path
             self.label_1.SetLabel("Error, no path given.")
         else:
             #self.text = self.testtypes[0] + pyex.ID3test() + " \n" + self.testtypes[1] + pyex.AddDBtest() \
@@ -71,7 +70,6 @@ class MyFrame1(wx.Frame):
         self.Close()
         event.Skip()
 
-
     def on_dir(self, event):  # wxGlade: MyFrame1.<event_handler>
         dlg = wx.DirDialog(self, "Choose a directory:",
                            style=wx.DD_DEFAULT_STYLE
@@ -80,11 +78,13 @@ class MyFrame1(wx.Frame):
                            )
         if dlg.ShowModal() == wx.ID_OK:
             self.label_1.SetLabel(dlg.GetPath())
-            self.path_choice = dlg.GetPath()      #set path for directory transversal
+            self.path_choice = dlg.GetPath()  # set path for directory transversal
         dlg.Destroy()
         event.Skip()
 
 # end of class MyFrame
+
+
 class MyApp(wx.App):
     def OnInit(self):
         wx.InitAllImageHandlers()
